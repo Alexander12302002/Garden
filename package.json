@@ -5,12 +5,14 @@
   "main": "js/main.js",
   "type": "module",
   "scripts": {
-    "dev": "node js/main.js"
+    "dev": "node js/main.js",
+    "server": "json-server js/db/db.json"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "async-prompt": "^1.0.1"
+    "async-prompt": "^1.0.1",
+    "json-server": "^1.0.0-alpha.23"
   }
 }
