@@ -15,4 +15,10 @@ import {
 import { 
     getAllFullName 
 } from "./module/clients.js";
-console.log(await getAllFullName())
+//console.log(await getAllFullName())
+
+import {
+    getAllStatus 
+} from "./module/requests.js";
+//console.log(await getAllStatus())
+
