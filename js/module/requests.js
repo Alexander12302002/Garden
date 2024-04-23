@@ -9,3 +9,5 @@ export const getAllStatus = async() =>{
     })
     return dataUpdate
 }
+
+

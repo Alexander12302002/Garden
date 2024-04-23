@@ -13,12 +13,20 @@ import {
 //console.log(await getAllFullNamePositionDiferentSalesRepresentative())
 
 import { 
-    getAllFullName 
+    getAllFullName,
+    getAllClientsFromCityAndCode,
+    getAll
 } from "./module/clients.js";
 //console.log(await getAllFullName())
+//console.log(await getAllClientsFromCityAndCode())
+console.log(await getAll())
 
 import {
     getAllStatus 
 } from "./module/requests.js";
 //console.log(await getAllStatus())
 
+import { 
+    getAllPaymentsFromPaypalEachYear 
+} from "./module/payments.js";
+//console.log(await getAllPaymentsFromPaypalEachYear());
