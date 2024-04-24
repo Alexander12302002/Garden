@@ -1,3 +1,4 @@
+//Devuelve un listado con todos los pagos que se realizaron en el año 2008 mediante Paypal. Ordene el resultado de mayor a menor.
 export const getAllPaymentsFromPaypalEachYear = async() =>{
     let res = await fetch("http://localhost:5505/payments?payment=PayPal");
     let data = await res.json();
@@ -16,3 +17,17 @@ export const getAllPaymentsFromPaypalEachYear = async() =>{
     })
     return dataUpdate;
 }
+//Devuelve un listado con todas las formas de pago que aparecen en la tabla pago. Tenga en cuenta que no deben aparecer formas de pago repetidas.
+export const getPaymentsMethods = async() => {
+    let res = await fetch("http://localhost:5505/payments");
+    let data = await res.json();
+    let uniquePaymentMethods = new Set();
+    data.forEach(val => {
+        uniquePaymentMethods.add(val.payment);
+    });
+
+    let uniquePaymentMethodsArray = Array.from(uniquePaymentMethods);
+    return uniquePaymentMethodsArray;
+
+}
+

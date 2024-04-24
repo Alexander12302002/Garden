@@ -1,6 +1,7 @@
 import { getEmpleyeesByCode } from "./employee.js";
 import { getOfficesBycode } from "./offices.js";
 
+//Devuelve un listado con el nombre de los todos los clientes españoles.
 export const getAllFullName = async() =>{
     let res = await fetch("http://localhost:5501/clients?country=Spain")
     let data = await res.json();
@@ -14,6 +15,7 @@ export const getAllFullName = async() =>{
     return dataUpdate
 }
 
+//Devuelve un listado con todos los clientes que sean de la ciudad de Madrid y cuyo representante de ventas tenga el código de empleado 11 o 30.
 export const getAllClientsFromCityAndCode = async()=>{
     let res = await fetch("http://localhost:5501/clients?city=Madrid")
     let data = await res.json();
@@ -21,7 +23,7 @@ export const getAllClientsFromCityAndCode = async()=>{
     dataUpdate = data.filter(val => val.code_employee_sales_manager == 11 || val.code_employee_sales_manager == 30)
     return dataUpdate
 }
-
+//Devuelve el nombre de los clientes que han hecho pagos y el nombre de sus representantes junto con la ciudad de la oficina a la que pertenece el representante.
 export const getAll = async()=>{
     let res = await fetch("http://localhost:5501/clients")
     let client = await res.json();

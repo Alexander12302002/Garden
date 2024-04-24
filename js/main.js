@@ -19,14 +19,29 @@ import {
 } from "./module/clients.js";
 //console.log(await getAllFullName())
 //console.log(await getAllClientsFromCityAndCode())
-console.log(await getAll())
+//console.log(await getAll())
 
 import {
-    getAllStatus 
+    getAllStatus ,
+    getAllRequestsStatusRefused,
+    getAllRequestsStatusDelivered,
+    getAllRequestsCodeClientAndDate,
+    getAllRequestsDeliveryEarly
 } from "./module/requests.js";
 //console.log(await getAllStatus())
+//console.log(await getAllRequestsStatusRefused())
+//console.log(await getAllRequestsStatusDelivered())
+//console.log(await getAllRequestsCodeClientAndDate())
+console.log(await getAllRequestsDeliveryEarly())
 
 import { 
-    getAllPaymentsFromPaypalEachYear 
+    getAllPaymentsFromPaypalEachYear,
+    getPaymentsMethods
 } from "./module/payments.js";
 //console.log(await getAllPaymentsFromPaypalEachYear());
+//console.log(await getPaymentsMethods())
+
+import { 
+    getAllOrnamentalesPlus100 
+} from "./module/product.js";
+//console.log(await getAllOrnamentalesPlus100())
