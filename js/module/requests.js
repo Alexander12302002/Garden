@@ -84,4 +84,10 @@ export const getAllRequestsDeliveryEarly = async() =>{
 }
 
 
+export const getAllRequestByCode = async(code) =>{
+    let res = await fetch(`http://localhost:5508/requests?code_client=${code}`)
+    let data = await res.json();
+    return data
+}
+
 

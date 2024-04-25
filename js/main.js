@@ -15,11 +15,15 @@ import {
 import { 
     getAllFullName,
     getAllClientsFromCityAndCode,
-    getAll
+    getAll,
+    getAllClientsAndManager,
+    getAllClientsPaymentsAndManger
 } from "./module/clients.js";
 //console.log(await getAllFullName())
 //console.log(await getAllClientsFromCityAndCode())
 //console.log(await getAll())
+//console.log(await getAllClientsAndManager())
+//console.log(await getAllClientsPaymentsAndManger())
 
 import {
     getAllStatus ,
@@ -32,7 +36,7 @@ import {
 //console.log(await getAllRequestsStatusRefused())
 //console.log(await getAllRequestsStatusDelivered())
 //console.log(await getAllRequestsCodeClientAndDate())
-console.log(await getAllRequestsDeliveryEarly())
+//console.log(await getAllRequestsDeliveryEarly())
 
 import { 
     getAllPaymentsFromPaypalEachYear,
@@ -45,3 +49,4 @@ import {
     getAllOrnamentalesPlus100 
 } from "./module/product.js";
 //console.log(await getAllOrnamentalesPlus100())
+

@@ -1,5 +1,8 @@
 import { getEmpleyeesByCode } from "./employee.js";
 import { getOfficesBycode } from "./offices.js";
+import { getAllRequestDetailsByCode } from "./request_details.js";
+import { getAllRequestByCode } from "./requests.js";
+import { getAllPaymentsByCode } from "./payments.js";
 
 //Devuelve un listado con el nombre de los todos los clientes españoles.
 export const getAllFullName = async() =>{
@@ -70,4 +73,86 @@ export const getAll = async()=>{
 
     }
     return client;
+}
+
+// Obtén un listado con el nombre de cada cliente y el nombre y apellido de su representante de ventas
+export const getAllClientsAndManager = async()=>{
+    let res = await fetch("http://localhost:5501/clients");
+    let client = await res.json();
+    for (let i = 0; i < client.length; i++) {
+        let {
+            id:id_client,
+            limit_credit,
+            postal_code:postal_code_client,
+            country:country_client,
+            region:region_client,
+            city,
+            address2:address2_client,
+            address1:address1_client,
+            fax,
+            phone,
+            ...clientUpdate} = client[i]
+            client[i] = clientUpdate
+        let [employee] = await getEmpleyeesByCode(clientUpdate.code_employee_sales_manager);
+        let{
+            in:id_employee,
+            extension,
+            email,
+            code_boss,
+            position,
+            ...employeeUpdate
+        } = employee
+        let data = {...clientUpdate, ...employeeUpdate}
+        client[i] = {
+            client_name: `${data.client_name}`,
+            employee_full_name: `${data.name} ${data.lastname1} ${data.lastname2}`,
+            employee_office_code: data.code_office,
+        }
+    }
+
+    return client
+}
+
+//Muestra el nombre de los clientes que hayan realizado pagos junto con el nombre de sus representantes de ventas.
+export const getAllClientsPaymentsAndManger = async()=>{
+    let res = await fetch("http://localhost:5501/clients")
+    let client = await res.json()
+    for (let i = 0; i < client.length; i++) {
+        let {
+            id:id_client,
+            limit_credit,
+            postal_code:postal_code_client,
+            country:country_client,
+            region:region_client,
+            city,
+            address2:address2_client,
+            address1:address1_client,
+            fax,
+            phone,
+            ...clientUpdate} = client[i]
+            client[i] = clientUpdate
+            let [employee] = await getEmpleyeesByCode(clientUpdate.code_employee_sales_manager);
+            let{
+            id:id_employee,
+            extension,
+            email,
+            code_boss,
+            position,
+            ...employeeUpdate} = employee
+            let [payments] = await getAllPaymentsByCode(clientUpdate.client_code);
+            let{
+                id_transaction,
+                total,
+                date_payment,
+                id_payment,
+            ...paymentUpdate} = payments
+            let data = {...clientUpdate, ...employeeUpdate, ...paymentUpdate}
+            client[i] = {
+                client_name: `${data.client_name}`,
+                employee_full_name: `${data.name} ${data.lastname1} ${data.lastname2}`,
+                employee_office_code: data.code_office,
+                payment: data.payment
+            }
+        } 
+    return client
 }
