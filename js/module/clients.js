@@ -140,19 +140,54 @@ export const getAllClientsPaymentsAndManger = async()=>{
             position,
             ...employeeUpdate} = employee
             let [payments] = await getAllPaymentsByCode(clientUpdate.client_code);
-            let{
-                id_transaction,
-                total,
-                date_payment,
-                id_payment,
-            ...paymentUpdate} = payments
-            let data = {...clientUpdate, ...employeeUpdate, ...paymentUpdate}
-            client[i] = {
-                client_name: `${data.client_name}`,
-                employee_full_name: `${data.name} ${data.lastname1} ${data.lastname2}`,
-                employee_office_code: data.code_office,
-                payment: data.payment
+            if (payments) {
+                let {
+                    id_transaction,
+                    total,
+                    date_payment,
+                    id_payment,
+                    ...paymentUpdate} = payments;
+                let data = { ...clientUpdate, ...employeeUpdate, ...paymentUpdate };
+                client[i] = {
+                    client_name: `${data.client_name}`,
+                    employee_full_name: `${data.name} ${data.lastname1} ${data.lastname2}`,
+                    employee_office_code: data.code_office,
+                    payment: data.payment
+                }
+            } else {
+                client[i] = {
+                    client_name: clientUpdate.client_name,
+                    employee_full_name: `${employeeUpdate.name} ${employeeUpdate.lastname1} ${employeeUpdate.lastname2}`,
+                    employee_office_code: employeeUpdate.code_office,
+                    payment: "No hay pagos disponibles"
+                };
             }
-        } 
-    return client
+        }   
+        return client
 }
+
+export const getClientsNotPaymentsAndEmplyee = async()=>{
+    let res = await fetch("http://localhost:5501/clients")
+    let clients = await res.json()
+    let clientsWithoutPayments = [];
+    for (const client of clients){
+        const { code_employee_sales_manager: employeeCode, client_code, client_name } = client;
+
+            const [employee] = await getEmpleyeesByCode(employeeCode);
+            const [payments] = await getAllPaymentsByCode(client_code);
+            
+            if (!payments) {
+                const { name, lastname1, lastname2, code_office} = employee;
+                const [offices] = await getOfficesBycode(code_office);
+                const { city } = offices
+                clientsWithoutPayments.push({
+                    client_name,
+                    employee_full_name: `${name} ${lastname1} ${lastname2}`,
+                    employee_office_code: code_office,
+                    employee_city: city,
+                    payment: "No hay pagos disponibles"
+                });
+            }
+        }
+        return clientsWithoutPayments
+    }

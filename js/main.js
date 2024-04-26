@@ -17,13 +17,15 @@ import {
     getAllClientsFromCityAndCode,
     getAll,
     getAllClientsAndManager,
-    getAllClientsPaymentsAndManger
+    getAllClientsPaymentsAndManger,
+    getClientsNotPaymentsAndEmplyee
 } from "./module/clients.js";
 //console.log(await getAllFullName())
 //console.log(await getAllClientsFromCityAndCode())
 //console.log(await getAll())
 //console.log(await getAllClientsAndManager())
 //console.log(await getAllClientsPaymentsAndManger())
+console.log(await getClientsNotPaymentsAndEmplyee())
 
 import {
     getAllStatus ,
