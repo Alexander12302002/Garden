@@ -191,3 +191,49 @@ export const getClientsNotPaymentsAndEmplyee = async()=>{
         }
         return clientsWithoutPayments
     }
+
+export const getClientsOfFuenlabrada = async() =>{
+    let res = await fetch(`http://localhost:5501/clients?city=Fuenlabrada`)
+    let clients = await res.json()
+    let clientsAndOfficesInFuelabrada = [];
+    for (const client of clients){
+        const { code_employee_sales_manager: employeeCode, client_code, client_name, city } = client;
+        const [employee] = await getEmpleyeesByCode(employeeCode);
+        const { name, lastname1, lastname2, code_office} = employee;
+        const [offices] = await getOfficesBycode(code_office);
+        const { } = offices
+
+        clientsAndOfficesInFuelabrada.push({
+            client_name,
+            client_code,
+            offices_office_code: code_office,
+            city: city,
+        })
+    }
+
+    return clientsAndOfficesInFuelabrada
+}
+
+export const getAllClientsAndEmployee = async() =>{
+    let res = await fetch(`http://localhost:5501/clients`)
+    let clients = await res.json()
+    let clientsAndOffices = [];
+    for (const client of clients){
+        const { code_employee_sales_manager: employeeCode, client_code, client_name, city } = client;
+        const [employee] = await getEmpleyeesByCode(employeeCode);
+        const { name, lastname1, lastname2, code_office} = employee;
+        const [offices] = await getOfficesBycode(code_office);
+        const { address1 } = offices
+
+        clientsAndOffices.push({
+            client_name,
+            client_code,
+            employee_full_name: `${name} ${lastname1} ${lastname2}`,
+            office_code: code_office,
+            city: city,
+            address: address1
+        })
+    }
+
+    return clientsAndOffices
+}

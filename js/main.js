@@ -6,26 +6,33 @@ import {
 import { 
     getAllFullNameAndEmails,
     getBoss,
-    getAllFullNamePositionDiferentSalesRepresentative
+    getAllFullNamePositionDiferentSalesRepresentative,
+    getAllEmpleyeesAndBoss,
+    getAllEmployeesAndBossOfBoss
 } from "./module/employee.js";
 //console.log(await getAllFullNameAndEmails())
 //console.log(await getBoss())
 //console.log(await getAllFullNamePositionDiferentSalesRepresentative())
-
+//console.log(await getAllEmpleyeesAndBoss())
+console.log(await getAllEmployeesAndBossOfBoss())
 import { 
     getAllFullName,
     getAllClientsFromCityAndCode,
     getAll,
     getAllClientsAndManager,
     getAllClientsPaymentsAndManger,
-    getClientsNotPaymentsAndEmplyee
+    getClientsNotPaymentsAndEmplyee,
+    getClientsOfFuenlabrada,
+    getAllClientsAndEmployee
 } from "./module/clients.js";
 //console.log(await getAllFullName())
 //console.log(await getAllClientsFromCityAndCode())
 //console.log(await getAll())
 //console.log(await getAllClientsAndManager())
 //console.log(await getAllClientsPaymentsAndManger())
-console.log(await getClientsNotPaymentsAndEmplyee())
+//console.log(await getClientsNotPaymentsAndEmplyee())
+//console.log(await getClientsOfFuenlabrada())
+//console.log(await getAllClientsAndEmployee())
 
 import {
     getAllStatus ,
