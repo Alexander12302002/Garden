@@ -8,13 +8,20 @@ import {
     getBoss,
     getAllFullNamePositionDiferentSalesRepresentative,
     getAllEmpleyeesAndBoss,
-    getAllEmployeesAndBossOfBoss
+    getAllEmployeesAndBossOfBoss,
+    getEmployeesWithoutClients,
+    getEmployeesWithoutClientsAndOffices,
+    getEmployeesWithoutOfficeAndClients
 } from "./module/employee.js";
 //console.log(await getAllFullNameAndEmails())
 //console.log(await getBoss())
 //console.log(await getAllFullNamePositionDiferentSalesRepresentative())
 //console.log(await getAllEmpleyeesAndBoss())
-console.log(await getAllEmployeesAndBossOfBoss())
+//console.log(await getAllEmployeesAndBossOfBoss())
+//console.log(await getEmployeesWithoutClients())
+//console.log(await getEmployeesWithoutClientsAndOffices())
+//console.log(await getEmployeesWithoutOfficeAndClients())
+
 import { 
     getAllFullName,
     getAllClientsFromCityAndCode,
@@ -23,7 +30,10 @@ import {
     getAllClientsPaymentsAndManger,
     getClientsNotPaymentsAndEmplyee,
     getClientsOfFuenlabrada,
-    getAllClientsAndEmployee
+    getAllClientsAndEmployee,
+    getAllclientsNotPayments,
+    getAllclientsNotRequests,
+    getAllclientsNotRequestsAndNotPayments
 } from "./module/clients.js";
 //console.log(await getAllFullName())
 //console.log(await getAllClientsFromCityAndCode())
@@ -33,6 +43,9 @@ import {
 //console.log(await getClientsNotPaymentsAndEmplyee())
 //console.log(await getClientsOfFuenlabrada())
 //console.log(await getAllClientsAndEmployee())
+//console.log(await getAllclientsNotPayments())
+//console.log(await getAllclientsNotRequests())
+//console.log(await getAllclientsNotRequestsAndNotPayments())
 
 import {
     getAllStatus ,
@@ -55,7 +68,11 @@ import {
 //console.log(await getPaymentsMethods())
 
 import { 
-    getAllOrnamentalesPlus100 
+    getAllOrnamentalesPlus100,
+    getProductsNeverOrdered,
+    getProductsNotOrdered 
 } from "./module/product.js";
 //console.log(await getAllOrnamentalesPlus100())
+//console.log(await getProductsNeverOrdered())
+console.log(await getProductsNotOrdered ())
 

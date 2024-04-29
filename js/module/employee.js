@@ -121,3 +121,58 @@ export const getAllEmployeesAndBossOfBoss = async()=>{
 
     return mapEmployeesAndBossesRecursively(employeesWithBosses)
 }
+
+export const getEmployeesWithoutClients = async () => {
+    let employeesRes = await fetch(`http://localhost:5502/employee`);
+    let clientsRes = await fetch(`http://localhost:5501/clients`);
+
+    let employees = await employeesRes.json();
+    let clients = await clientsRes.json();
+
+    let employeesWithClients = clients.map(client => client.code_employee_sales_manager);
+    let employeesWithoutClients = employees.filter(employee => !employeesWithClients.includes(employee.employee_code));
+
+    return employeesWithoutClients;
+}
+
+export const getEmployeesWithoutClientsAndOffices = async () => {
+    let employeesRes = await fetch(`http://localhost:5502/employee`);
+    let clientsRes = await fetch(`http://localhost:5501/clients`);
+    let officesRes = await fetch(`http://localhost:5504/offices`);
+
+    let employees = await employeesRes.json();
+    let clients = await clientsRes.json();
+    let offices = await officesRes.json();
+
+    let employeesWithClients = clients.map(client => client.code_employee_sales_manager);
+    let employeesWithoutClients = employees.filter(employee => !employeesWithClients.includes(employee.employee_code));
+
+    let employeesWithOffices = employeesWithoutClients.map(employee => {
+        let office = offices.find(office => office.code_office === employee.code_office);
+        return {
+            ...employee,
+            office: office ? office : null
+        };
+    });
+
+    return employeesWithOffices;
+}
+
+export const getEmployeesWithoutOfficeAndClients = async() =>{
+    let employeesRes = await fetch(`http://localhost:5502/employee`);
+    let clientsRes = await fetch(`http://localhost:5501/clients`);
+    let officesRes = await fetch(`http://localhost:5504/offices`);
+
+    let employees = await employeesRes.json();
+    let clients = await clientsRes.json();
+    let offices = await officesRes.json();
+
+    let employeesWithoutOffice = employees.filter(employee => !employee.code_office);
+    let employeesWithClients = clients.map(client => client.code_employee_sales_manager);
+    let employeesWithoutClients = employees.filter(employee => !employeesWithClients.includes(employee.employee_code));
+
+    return {
+        employeesWithoutOffice: employeesWithoutOffice,
+        employeesWithoutClients: employeesWithoutClients
+    };
+}

@@ -237,3 +237,48 @@ export const getAllClientsAndEmployee = async() =>{
 
     return clientsAndOffices
 }
+
+
+export const getAllclientsNotPayments = async() =>{
+    let res = await fetch(`http://localhost:5501/clients`)
+    let clients = await res.json()
+    let paymentsRes = await fetch(`http://localhost:5505/payments`);
+    let payments = await paymentsRes.json();
+    let clientsWithoutPayments = clients.filter(client => {
+        return !payments.some(payment => payment.client_code === client.client_code);
+    });
+
+    return clientsWithoutPayments;
+}
+
+export const getAllclientsNotRequests = async() =>{
+    let res = await fetch(`http://localhost:5501/clients`)
+    let requestsRes = await fetch(`http://localhost:5508/requests`);
+    let clients = await res.json()
+    let requests = await requestsRes.json();
+
+    let clientsWithoutRequests = clients.filter(client => {
+        return !requests.some(requests => requests.code_client == client.client_code);
+    });
+
+    return clientsWithoutRequests;
+}
+
+export const getAllclientsNotRequestsAndNotPayments = async() =>{
+    let res = await fetch(`http://localhost:5501/clients`)
+    let paymentsRes = await fetch(`http://localhost:5505/payments`);
+    let requestsRes = await fetch(`http://localhost:5508/requests`);
+    let clients = await res.json()
+    let payments = await paymentsRes.json();
+    let requests = await requestsRes.json();
+
+    let clientsWithoutPayments = clients.filter(client => {
+        return !payments.some(payment => payment.code_client === client.client_code);
+    });
+
+    let clientsWithoutRequests = clientsWithoutPayments.filter(client => {
+        return !requests.some(request => request.code_client === client.client_code);
+    });
+
+    return clientsWithoutRequests;
+}
