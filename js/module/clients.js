@@ -27,7 +27,7 @@ export const getAllClientsFromCityAndCode = async()=>{
     return dataUpdate
 }
 //Devuelve el nombre de los clientes que han hecho pagos y el nombre de sus representantes junto con la ciudad de la oficina a la que pertenece el representante.
-export const getAll = async()=>{
+export const getAllClientsWithRepresentativesInfo = async()=>{
     let res = await fetch("http://localhost:5501/clients")
     let client = await res.json();
     for (let i = 0; i < client.length; i++) {        
