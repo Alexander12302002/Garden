@@ -1,7 +1,9 @@
 import {
     getAllFullName,
     getAllClientsFromCityAndCode,
-    getAllClientsWithRepresentativesInfo 
+    getAllClientsWithRepresentativesInfo,
+    getAllClientsAndManager,
+    getAllClientsPaymentsAndManger
     
 } from "../module/clients.js"
 export class Mycard extends HTMLElement{
@@ -54,7 +56,6 @@ export class Mycard extends HTMLElement{
 
     async getAllClientsWithRepresentativesInfoDesign(){
         let data = await getAllClientsWithRepresentativesInfo();
-        console.log(await getAllClientsWithRepresentativesInfo())
         data.forEach(val =>{
             this.shadowRoot.innerHTML += /* html */`
                 <div class="report__card">
@@ -75,6 +76,45 @@ export class Mycard extends HTMLElement{
         })
     }
 
+    async getAllClientsAndManagerDesing(){
+        let data = await getAllClientsAndManager();
+        data.forEach(val =>{
+            this.shadowRoot.innerHTML += /* html */`
+            <div class="report__card">
+                <div class="card__title">
+                    <div>${val.client_name}</div>
+                </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                        <p><b>Code Office: </b> ${val.employee_office_code}</p>
+                        <p><b>Nombre Empleado </b>${val.employee_full_name}</p>
+                        </div>
+                    </div>
+            </div>
+        
+        `
+        })
+    }
+
+    async getAllClientsPaymentsAndMangerDesing(){
+        let data = await getAllClientsPaymentsAndManger();
+        data.forEach(val =>{
+            this.shadowRoot.innerHTML += /* html */`
+            <div class="report__card">
+                <div class="card__title">
+                    <div>${val.client_name}</div>
+                </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                        <p><b>Payment: </b> ${val.payment}</p>
+                        <p><b>Nombre Empleado </b>${val.employee_full_name}</p>
+                        </div>
+                    </div>
+            </div>
+        `
+        })
+    }
+
     static get observedAttributes(){
         return ["logic"]
     }
@@ -82,6 +122,8 @@ export class Mycard extends HTMLElement{
         if(name == "logic" && now == "client_1") this.getAllClientsFromCityAndCodeDesign();
         if(name == "logic" && now == "client_2") this.getAllFullNameDesign();
         if(name == "logic" && now == "client_3") this.getAllClientsWithRepresentativesInfoDesign();
+        if(name == "logic" && now == "client_4") this.getAllClientsAndManagerDesing();
+        if(name == "logic" && now == "client_5") this.getAllClientsPaymentsAndMangerDesing();
     }
 }
 
