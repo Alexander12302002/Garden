@@ -23,12 +23,18 @@ btn.forEach(val =>{
         }
         if(e.target.innerHTML=="employees"){
             report__details.innerHTML = /*html*/`
-            <my-details logic="client_5" text="5. Devuelve el nombre de los clientes que hayan realizado pagos junto con el nombre de sus representantes de ventas."></my-details> 
+            <my-details logic="employee_1" text="1. Devuelve un listado con el nombre, apellidos y email de los empleados cuyo jefe tiene un código de jefe igual a 7."></my-details> 
+            <my-details logic="employee_2" text="2. Devuelve el nombre del puesto, nombre, apellidos y email del jefe de la empresa."></my-details>
+            <my-details logic="employee_3" text="3. Devuelve un listado con el nombre, apellidos y puesto de aquellos empleados que no sean representantes de ventas."></my-details>  
+            <my-details logic="employee_4" text="4. Devuelve un listado con el nombre de los empleados junto con el nombre de sus jefes."></my-details>  
+            <my-details logic="employee_5" text="5. Devuelve un listado que muestre el nombre de cada empleados, el nombre de su jefe y el nombre del jefe de sus jefe."></my-details>  
+            <my-details logic="employee_6" text="6. Devuelve un listado con los datos de los empleados que no tienen clientes asociados y el nombre de su jefe asociado."></my-details>  
+            <my-details logic="employee_7" text="7. Devuelve un listado que muestre los empleados que no tienen una oficina asociada y los que no tienen un cliente asociado."></my-details>  
             `
         }
 
         if(e.target.innerHTML=="gama"){
-            report__details.innerHTML = /*html*/`
+            report__details.innerHTML = /*html*/`   
                 <h1>Aun no estan estas consultas</h1>
             `
         }

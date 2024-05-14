@@ -282,3 +282,9 @@ export const getAllclientsNotRequestsAndNotPayments = async() =>{
 
     return clientsWithoutRequests;
 }
+
+export const getAllClients = async() =>{
+    let res = await fetch(`http://localhost:5501/clients`);
+    let data = await res.json();
+    return data;
+}
