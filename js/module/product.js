@@ -11,6 +11,7 @@ export const getAllOrnamentalesPlus100 = async() =>{
     return dataUpdate
 }
 
+//Devuelve un listado de los productos que nunca han aparecido en un pedido
 export const getProductsNeverOrdered = async() =>{
     let productsRes = await fetch(`http://localhost:5506/products`);
     let products = await productsRes.json();
@@ -32,6 +33,7 @@ export const getProductsNeverOrdered = async() =>{
     return productsNeverOrdered;
 }
 
+//Devuelve un listado de los productos que nunca han aparecido en un pedido, mostrando el nombre, la descripción y la imagen del producto.
 export const getProductsNotOrdered = async() =>{
     let productsRes = await fetch(`http://localhost:5506/products`);
     let products = await productsRes.json();

@@ -17,6 +17,30 @@ import {
     getEmployeesWithoutClientsAndOffices,
 
 } from "../module/employee.js"
+
+import { 
+    getAllOficceAndcodeCity,
+    getAllOficceCityAndMovil
+} from "../module/offices.js";
+
+import { 
+    getAllPaymentsFromPaypalEachYear,
+    getPaymentsMethods
+} from "../module/payments.js";
+
+import { 
+    getAllOrnamentalesPlus100,
+    getProductsNeverOrdered,
+    getProductsNotOrdered
+} from "../module/product.js";
+
+import { 
+    getAllStatus,
+    getAllRequestsStatusRefused,
+    getAllRequestsStatusDelivered,
+    getAllRequestsCodeClientAndDate,
+    getAllRequestsDeliveryEarly
+} from "../module/requests.js";
 export class Mycard extends HTMLElement{
     constructor(){
         super();
@@ -248,7 +272,6 @@ export class Mycard extends HTMLElement{
 
     async getEmployeesWithoutClientsAndOfficesDesign(){
         let data = await getEmployeesWithoutClientsAndOffices()
-        console.log
         data.forEach(val =>{
             this.shadowRoot.innerHTML += /* html */`
             <div class="report__card">
@@ -263,6 +286,254 @@ export class Mycard extends HTMLElement{
             </div>
             `    
             })
+    }
+
+    async getAllOficceAndcodeCityDesign(){
+        let data = await getAllOficceAndcodeCity()
+        data.forEach(val =>{
+            this.shadowRoot.innerHTML += /* html */`
+            <div class="report__card">
+                <div class="card__title">
+                    <div>${val.city}</div>
+                </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                        <p><b>Codigo ciudad: </b>${val.code_office}</p>
+                        </div>
+                    </div>
+            </div>
+            `    
+            })
+    }
+
+    async getAllOficceCityAndMovilDesign(){
+        let data = await getAllOficceCityAndMovil()
+        data.forEach(val =>{
+            this.shadowRoot.innerHTML += /* html */`
+            <div class="report__card">
+                <div class="card__title">
+                    <div>${val.code_office}</div>
+                </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                        <p><b>Celular: </b>${val.movil}</p>
+                        </div>
+                    </div>
+            </div>
+            `    
+            })
+    }
+
+    async getAllPaymentsFromPaypalEachYearDesign(){
+        let data = await getAllPaymentsFromPaypalEachYear()
+        data.forEach(val =>{
+            this.shadowRoot.innerHTML += /* html */`
+            <div class="report__card">
+                <div class="card__title">
+                    <div>${val.id_transaction}</div>
+                </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                        <p><b>code_client: </b>${val.code_client}</p>
+                        <p><b>id: </b>${val.id}</p>
+                        <p><b>date_payment: </b>${val.date_payment}</p>
+                        <p><b>payment: </b>${val.payment}</p>
+                        <p><b>total: </b>${val.total}</p>
+                        </div>
+                    </div>
+            </div>
+            `    
+            })
+    }
+
+    async getPaymentsMethodsDesign(){
+        let data = await getPaymentsMethods()
+        data.forEach(val =>{
+            this.shadowRoot.innerHTML += /* html */`
+            <div class="report__card">
+                <div class="card__title">
+                    <div>${val}</div>
+                </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                        <p><b>Pago: </b>${val}</p>
+                    </div>
+            </div>
+            `    
+            })
+    }
+
+    async getAllOrnamentalesPlus100Design(){
+        let data = await getAllOrnamentalesPlus100()
+        data.forEach(val =>{
+            this.shadowRoot.innerHTML += /* html */`
+            <div class="report__card">
+                <div class="card__title">
+                    <div>${val.code_product}</div>
+                </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                        <p><b>description: </b>${val.description}</p>
+                        <p><b>dimension: </b>${val.dimension}</p>
+                        <p><b>gama: </b>${val.gama}</p>
+                        <p><b>id: </b>${val.id}</p>
+                        <p><b>name: </b>${val.name}</p>
+                        <p><b>price_provider: </b>${val.price_provider}</p>
+                        <p><b>price_sale: </b>${val.price_sale}</p>
+                        <p><b>provider: </b>${val.provider}</p>
+                        <p><b>stock: </b>${val.stock}</p>
+                    </div>
+            </div>
+            `    
+            })
+    }
+
+    async getProductsNeverOrderedDesign(){
+        let data = await getProductsNeverOrdered()
+        data.forEach(val =>{
+            this.shadowRoot.innerHTML += /* html */`
+            <div class="report__card">
+                <div class="card__title">
+                    <div>${val.name}</div>
+                </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                        <p><b>description: </b>${val.imagen}</p>
+                        <p><b>dimension: </b>${val.dimension}</p>
+                        <p><b>gama: </b>${val.gama}</p>
+                        <p><b>id: </b>${val.id}</p>
+                        <p><b>name: </b>${val.name}</p>
+                        <p><b>price_provider: </b>${val.price_provider}</p>
+                        <p><b>price_sale: </b>${val.price_sale}</p>
+                        <p><b>provider: </b>${val.provider}</p>
+                        <p><b>stock: </b>${val.stock}</p>
+                    </div>
+            </div>
+            `    
+            })
+    }
+
+    async getProductsNotOrderedDesign(){
+        let data = await getProductsNotOrdered()
+        data.forEach(val =>{
+            this.shadowRoot.innerHTML += /* html */`
+            <div class="report__card">
+                <div class="card__title">
+                    <div>${val.name}</div>
+                </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                        <p><b>image: </b>${val.image}</p>
+                        <p><b>description: </b>${val.description}</p>
+                    </div>
+            </div>
+            `    
+            })
+    }
+
+    async getAllStatusDesign(){
+        let data = await getAllStatus()
+        data.forEach(val =>{
+            this.shadowRoot.innerHTML += /* html */`
+            <div class="report__card">
+                <div class="card__title">
+                    <div></div>
+                </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                        <p><b>Status: </b>${val}</p>
+                    </div>
+            </div>
+            `    
+            })
+    }
+
+    async getAllRequestsStatusRefusedDesing(){
+        let data = await getAllRequestsStatusRefused()
+        data.forEach(val =>{
+            this.shadowRoot.innerHTML += /* html */`
+            <div class="report__card">
+                <div class="card__title">
+                    <div>${val.code_client}</div>
+                </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                        <p><b>code_request: </b>${val.code_request}</p>
+                        <p><b>comment: </b>${val.comment}</p>
+                        <p><b>date_delivery: </b>${val.date_delivery}</p>
+                        <p><b>date_request: </b>${val.date_request}</p>
+                        <p><b>date_wait: </b>${val.date_wait}</p>
+                        <p><b>id: </b>${val.id}</p>
+                        <p><b>Status: </b>${val.status}</p>
+                    </div>
+            </div>
+            `    
+            })
+    }
+
+    async getAllRequestsStatusDeliveredDesing(){
+        let data = await getAllRequestsStatusDelivered();
+        data.forEach(val =>{
+            this.shadowRoot.innerHTML += /* html */`
+            <div class="report__card">
+                <div class="card__title">
+                    <div>${val.code_client}</div>
+                </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                        <p><b>code_request: </b>${val.code_request}</p>
+                        <p><b>comment: </b>${val.comment}</p>
+                        <p><b>date_delivery: </b>${val.date_delivery}</p>
+                        <p><b>date_request: </b>${val.date_request}</p>
+                        <p><b>date_wait: </b>${val.date_wait}</p>
+                        <p><b>id: </b>${val.id}</p>
+                        <p><b>Status: </b>${val.status}</p>
+                    </div>
+            </div>
+            `    
+            })
+    }
+
+    async getAllRequestsCodeClientAndDateDesing(){
+        let data = await getAllRequestsCodeClientAndDate();
+        data.forEach(val =>{
+            this.shadowRoot.innerHTML += /* html */`
+            <div class="report__card">
+                <div class="card__title">
+                    <div>${val.code_client}</div>
+                </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                        <p><b>code_request: </b>${val.code_request}</p>
+                        <p><b>date_request: </b>${val.date_request}</p>
+                        <p><b>date_wait: </b>${val.date_wait}</p>
+                    </div>
+            </div>
+            `    
+            })
+    }
+
+    async getAllRequestsDeliveryEarlyDesing(){
+        let data = await getAllRequestsDeliveryEarly();
+        data.forEach(val =>{
+            this.shadowRoot.innerHTML += /* html */`
+            <div class="report__card">
+                <div class="card__title">
+                    <div>${val.code_client}</div>
+                </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                        <p><b>code_request: </b>${val.code_request}</p>
+                        <p><b>comment: </b>${val.comment}</p>
+                        <p><b>date_delivery: </b>${val.date_delivery}</p>
+                        <p><b>date_request: </b>${val.date_request}</p>
+                        <p><b>date_wait: </b>${val.date_wait}</p>
+                        <p><b>id: </b>${val.id}</p>
+                        <p><b>Status: </b>${val.status}</p>
+                    </div>
+            </div>
+            `    
+            })  
     }
 
     static get observedAttributes(){
@@ -281,7 +552,18 @@ export class Mycard extends HTMLElement{
         if(name == "logic" && now == "employee_5") this.getAllEmployeesAndBossOfBossDesigg();
         if(name == "logic" && now == "employee_6") this.getEmployeesWithoutClientsDesign();
         if(name == "logic" && now == "employee_7") this.getEmployeesWithoutClientsAndOfficesDesign();
-
+        if(name == "logic" && now == "offices_1") this.getAllOficceAndcodeCityDesign();
+        if(name == "logic" && now == "offices_2") this.getAllOficceCityAndMovilDesign();
+        if(name == "logic" && now == "payments_1") this.getAllPaymentsFromPaypalEachYearDesign();
+        if(name == "logic" && now == "payments_2") this.getPaymentsMethodsDesign();
+        if(name == "logic" && now == "product_1") this.getAllOrnamentalesPlus100Design();
+        if(name == "logic" && now == "product_2") this.getProductsNeverOrderedDesign();
+        if(name == "logic" && now == "product_3") this.getProductsNotOrderedDesign();
+        if(name == "logic" && now == "requests_1") this.getAllStatusDesign();
+        if(name == "logic" && now == "requests_2") this.getAllRequestsStatusRefusedDesing();
+        if(name == "logic" && now == "requests_3") this.getAllRequestsStatusDeliveredDesing();
+        if(name == "logic" && now == "requests_4") this.getAllRequestsCodeClientAndDateDesing();
+        if(name == "logic" && now == "requests_5") this.getAllRequestsDeliveryEarlyDesing();
     }
 }
 

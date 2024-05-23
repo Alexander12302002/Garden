@@ -1,7 +1,5 @@
 import { getEmpleyeesByCode } from "./employee.js";
 import { getOfficesBycode } from "./offices.js";
-import { getAllRequestDetailsByCode } from "./request_details.js";
-import { getAllRequestByCode } from "./requests.js";
 import { getAllPaymentsByCode } from "./payments.js";
 
 //Devuelve un listado con el nombre de los todos los clientes españoles.

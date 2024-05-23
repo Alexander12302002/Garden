@@ -41,19 +41,23 @@ btn.forEach(val =>{
 
         if(e.target.innerHTML=="offices"){
             report__details.innerHTML = /*html*/`
-                <h1>Aun no estan estas consultas</h1>
+            <my-details logic="offices_1" text="1. Devuelve un listado con el código de oficina y la ciudad donde hay oficinas."></my-details>
+            <my-details logic="offices_2" text="2. Devuelve un listado con la ciudad y el teléfono de las oficinas de España."></my-details>  
             `
         }
 
         if(e.target.innerHTML=="payments"){
             report__details.innerHTML = /*html*/`
-                <h1>Aun no estan estas consultas</h1>
+            <my-details logic="payments_1" text="1. Devuelve un listado con todos los pagos que se realizaron en el año 2008 mediante Paypal. Ordene el resultado de mayor a menor."></my-details>
+            <my-details logic="payments_2" text="2. Devuelve un listado con todas las formas de pago que aparecen en la tabla pago. Tenga en cuenta que no deben aparecer formas de pago repetidas."></my-details>
             `
         }
 
         if(e.target.innerHTML=="product"){
             report__details.innerHTML = /*html*/`
-                <h1>Aun no estan estas consultas</h1>
+            <my-details logic="product_1" text="1. Devuelve un listado con todos los productos que pertenecen a la gama Ornamentales y que tienen más de 100 unidades en stock. El listado deberá estar ordenado por su precio de venta, mostrando en primer lugar los de mayor precio."></my-details>
+            <my-details logic="product_2" text="2. Devuelve un listado de los productos que nunca han aparecido en un pedido."></my-details>
+            <my-details logic="product_3" text="3. Devuelve un listado de los productos que nunca han aparecido en un pedido, mostrando el nombre, la descripción y la imagen del producto."></my-details>
             `
         }
 
@@ -65,7 +69,11 @@ btn.forEach(val =>{
 
         if(e.target.innerHTML=="requests"){
             report__details.innerHTML = /*html*/`
-                <h1>Aun no estan estas consultas</h1>
+            <my-details logic="requests_1" text="1. Devuelve un listado con los distintos estados por los que puede pasar un pedido."></my-details>
+            <my-details logic="requests_2" text="2. Devuelve un listado de todos los pedidos que fueron rechazados en 2009."></my-details>
+            <my-details logic="requests_3" text="3. Devuelve un listado de todos los pedidos que han sido entregados en el mes de enero de cualquier año."></my-details>
+            <my-details logic="requests_4" text="4. Devuelve un listado con el código de pedido, código de cliente, fecha esperada y fecha de entrega de los pedidos que no han sido entregados a tiempo."></my-details>
+            <my-details logic="requests_5" text="5. Devuelve un listado con el código de pedido, código de cliente, fecha esperada y fecha de entrega de los pedidos cuya fecha de entrega ha sido al menos dos días antes de la fecha esperada."></my-details>
             `
         }
     })

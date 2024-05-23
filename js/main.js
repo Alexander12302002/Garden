@@ -11,7 +11,6 @@ import {
     getAllEmployeesAndBossOfBoss,
     getEmployeesWithoutClients,
     getEmployeesWithoutClientsAndOffices,
-    getEmployeesWithoutOfficeAndClients
 } from "./module/employee.js";
 //console.log(await getAllFullNameAndEmails())
 //console.log(await getBoss())
@@ -25,7 +24,6 @@ import {
 import { 
     getAllFullName,
     getAllClientsFromCityAndCode,
-    getAll,
     getAllClientsAndManager,
     getAllClientsPaymentsAndManger,
     getClientsNotPaymentsAndEmplyee,
@@ -74,5 +72,5 @@ import {
 } from "./module/product.js";
 //console.log(await getAllOrnamentalesPlus100())
 //console.log(await getProductsNeverOrdered())
-console.log(await getProductsNotOrdered ())
+//console.log(await getProductsNotOrdered ())
 
