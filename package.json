@@ -6,14 +6,15 @@
   "type": "module",
   "scripts": {
     "dev": "node --watch js/main.js",
-    "clients": "json-server js/db/clients.json -p 5501",
-    "employee": "json-server js/db/employee.json -p 5502",
-    "gama": "json-server js/db/gama.json -p 5503",
-    "offices": "json-server js/db/offices.json -p 5504",
-    "payments": "json-server js/db/payments.json -p 5505",
-    "product": "json-server js/db/product.json -p 5506",
-    "request_details": "json-server js/db/request_details.json -p 5507",
-    "requests": "json-server js/db/requests.json -p 5508"
+    "server": "npm run clients & npm run employee & npm run offices & npm run payments & npm run product & npm run requests",
+    "clients": "json-server -h 172.16.101.146 js/db/clients.json -p 5523",
+    "employee": "json-server -h 172.16.101.146 js/db/employee.json -p 5524",
+    "gama": "json-server -h 172.16.101.146 js/db/gama.json -p 5503",
+    "offices": "json-server -h 172.16.101.146 js/db/offices.json -p 5525",
+    "payments": "json-server -h 172.16.101.146 js/db/payments.json -p 5526",
+    "product": "json-server -h 172.16.101.146 js/db/product.json -p 5527",
+    "request_details": "json-server -h 172.16.101.146 js/db/request_details.json -p 5507",
+    "requests": "json-server -h 172.16.101.146 js/db/requests.json -p 5528"
   },
   "keywords": [],
   "author": "",
